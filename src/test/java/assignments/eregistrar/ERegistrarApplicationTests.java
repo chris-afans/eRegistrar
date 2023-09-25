@@ -1,13 +1,13 @@
-package edu.mum.cs.cs425.demowebapps.eregistrar;
+package assignments.eregistrar;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ElibraryApplicationTests {
+class ERegistrarApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

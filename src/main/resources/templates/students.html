@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRegistrar system ::: Students</title>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main>
+    <h1>Students</h1>
+    <hr>
+    <h2>List of Students</h2>
+    <section>
+        <form method="get" action="/eregistrar/students/search">
+            <fieldset>
+                <legend style="font-weight: bolder;">Search for Student(s)</legend>
+                <label>
+                    You may search by Student's number, first name, middle name, or last name.
+                </label>
+                <div>
+                    <input id="searchString" type="search" name="searchString" placeholder="search" style="width: 10%; height: 15%;" th:value="${searchString}" autofocus>
+                    <button type="submit" style="height: 15%; width: 4em;">search</button>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+    <section>
+        <span style="float: right;">
+                <a class="btn btn-outline-primary btn-lg" href="/eregistrar/students/new">
+                    <i class="fa-brands fa-product-hunt"></i> Add a New Student
+                </a>
+            </span>
+        <table border="2">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th> Student Number </th>
+                <th> First Name</th>
+                <th> Middle Name</th>
+                <th> Last Name</th>
+                <th> CGPA </th>
+                <th> Is International </th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student, counter : ${students}">
+                <th th:text="${counter.count}"></th>
+                <td th:text="${student.studentNumber}"></td>
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.middleName}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.cgpa}"></td>
+                <td th:text="${student.isInternational}"></td>
+                <td>
+                   <a th:href="@{'/eregistrar/students/edit/{studentId}'(studentId=${student.studentId})}">
+                       <i class="fa-regular fa-pen-to-square"></i> Edit
+                   </a>
+                </td>
+                <td>
+                    <a th:href="@{'/eregistrar/students/delete/{studentId}'(studentId=${student.studentId})}">
+                        <i class="fa-solid fa-delete-left"></i> Delete
+                    </a>
+                </td>
+            </tr>
+            <tr th:if="${students.isEmpty()}">
+                <td colspan="6" th:align="center">No students found</td>
+            </tr>
+            </tbody>
+        </table>
+<!--        Paging nd sorting-->
+        <div>
+            <div>
+                <div class="page-item disabled">
+                    <a class="page-link" href="#">Pages: </a>
+                </div>
+                <div th:each="i : ${#numbers.sequence(1, students.totalPages)}"
+                    th:class="${currentPageNo}==${i-1}?'page-item active':'page-item'">
+                    <a th:href="@{/eregistrar/students(pageNo=${i-1})}"
+                       th:text="${i}" class = "page-link"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

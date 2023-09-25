@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>eRegistrar system ::: Add New Student</title>
+</head>
+<body>
+    <header th:replace="~{fragments/header :: header}"></header>
+    <main>
+        <h2>New Student Form</h2>
+        <form id="studentForm" method="post" action="/eregistrar/students/register"  th:object="${student}">
+            <fieldset>
+                <div style="align-content: center">
+                    <input type="hidden" name="studentId" th:value="${student.studentId}" /> </br> </br>
+                    <label>Student Number</label> </br> </br>
+                    <input id="studentnumber" type="text" name="studentNumber" th:value="${student.studentNumber}" /> </br> </br>
+                    <label>First Name</label> </br> </br>
+                    <input id="firstname" name="firstName" type="text" th:value="${student.firstName}"> </br> </br>
+                    <label>Middle Name</label> </br> </br>
+                    <input id="middlename" name="middleName" type="text" th:value="${student.middleName}"> </br> </br>
+                    <label>Last Name</label> </br> </br>
+                    <input id="lastname" name="lastName" type="text" th:value="${student.lastName}"> </br> </br>
+                    <label>CGPA</label> </br> </br>
+                    <input id="cgpa" name="cgpa" type="text" th:value="${student.cgpa}"> </br> </br>
+                    <label>Date Of Enrollment</label> </br> </br>
+                    <input id="dateOfEnrollment" name="dateOfEnrollment" type="date" th:value="${student.dateOfEnrollment}"> </br> </br>
+                    <label>Is International</label> </br> </br>
+                    <select id="isInternational" name="isInternational">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select> </br> </br>
+                </div>
+                <div>
+                    <button id="btnReset" type="reset" style="margin-right: 1em;">Reset</button>
+                    <a href="/eregistrar/students" style="margin-right: 1em;">Cancel</a>
+                    <button type="submit" style="margin-right: 1em;" >Register Student</button>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>

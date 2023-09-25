@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eRegistrar system ::: Edit Student</title>
+</head>
+<body>
+    <header th:replace="~{fragments/header :: header}"></header>
+    <main>
+        <h2>Edit Student</h2>
+        <form id="studentForm" method="post" action="/eregistrar/students/update" th:object="${student}">
+            <fieldset>
+                <div style="align-content: center">
+                    <input type="hidden" name="studentId" th:value="${student.studentId}" /> </br> </br>
+                    <label>Student Number</label> </br> </br>
+                    <input id="studentNumber" type="text" name="studentNumber" th:value="${student.studentNumber}" /> </br> </br>
+                    <label>First Name</label> </br> </br>
+                    <input id="firstname" name="firstName" type="text" th:value="${student.firstName}"> </br> </br>
+                    <label>Middle Name</label> </br> </br>
+                    <input id="middlename" name="middleName" type="text" th:value="${student.middleName}"> </br> </br>
+                    <label>Last Name</label> </br> </br>
+                    <input id="lastname" name="lastName" type="text" th:value="${student.lastName}"> </br> </br>
+                    <label>CGPA</label> </br> </br>
+                    <input id="cgpa" name="cgpa" type="text" th:value="${student.cgpa}"> </br> </br>
+                    <label>Is International</label> </br> </br>
+                    <select id="isInternational" name="isInternational">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select> </br> </br>
+                </div>
+                <div>
+                    <a href="/eregistrar/students" style="margin-right: 1em;">Cancel</a>
+                    <button type="submit" style="margin-right: 1em;" >Update Student</button>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
